@@ -4,12 +4,10 @@ HPSC Lab 2
 In the last lab we practiced looking at effects of different memory access locations and patterns.  This week we are adding processing loads into the mix.  The goals are:
 * Be able to differentiate memory-bound and processing-bound workloads for a system in practice.
 * Observe some effects of vectorization.
-* Hypothesize
-
------
+* Produce evidence that you were here and being thoughtful.  In particular, for each of the next two sections, create one or two labeled charts of something you explored, along with at most two paragraphs of explanations or other observations that you found helpful or interesting.
 
 WORDS OF CAUTION:
-If you are using a shared resource (even if you are only sharing it with yourself), the OS Kernel may be unkind to you.  Machines may also be prone to turning components off while idling, heating up, and/or throttling themselves.  Be wary!  Run speed tests multiple times with pauses (not only in succession), and convince yourself whether (or not) the results are reasonable.
+As encountered in the last lab, if you are using a shared resource (even if you are only sharing it with yourself), the OS Kernel may be unkind to you.  Machines may also be prone to turning components off while idling, heating up, and/or throttling themselves.  Be wary!  Run speed tests multiple times with pauses (not only in succession), and convince yourself whether (or not) the results are reasonable.
 
 -----
 
@@ -35,3 +33,5 @@ What is the relationship between the vectorized and unvectorized versions as you
 -----
 
 Still looking for more?  Try repeating the characterizations for different cache uses?  How are they similar/different?
+
+If you want to get your hands on more coding, multiblock.c currently has a simple multiply inside the innermost loop.  You could try other kernels.  Which can be vectorized?  Can you come up with any that you can fuse with additional compiler flags, or noticeably leverage other performance features such as simultaneous multi-threading?

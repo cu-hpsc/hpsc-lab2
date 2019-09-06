@@ -1,10 +1,10 @@
-HPSC Lab 2
-2019/9/6
+# HPSC Lab 2
+2019-09-06
 
-In the last lab we practiced looking at effects of different memory access locations and patterns.  This week we are adding processing loads into the mix.  The goals are:
+In the last lab we looked at effects of different memory access locations and patterns.  This week we are adding processing loads into the mix.  The goals are:
 * Be able to differentiate memory-bound and processing-bound workloads for a system in practice.
-* Observe some effects of vectorization.
-* Produce evidence that you were here and being thoughtful.  In particular, for each of the next two sections, create one or two labeled charts of something you explored, along with at most two paragraphs of explanations or other observations that you found helpful or interesting.
+* Observe some effects of vectorization and learn programming techniques to help the compiler vectorize.
+* Produce evidence of critical thinking.  In particular, for each of the next two sections, create one or two labeled charts of something you explored, along with at most two paragraphs of explanations or other observations that you found helpful or interesting.
 
 WORDS OF CAUTION:
 As encountered in the last lab, if you are using a shared resource (even if you are only sharing it with yourself), the OS Kernel may be unkind to you.  Machines may also be prone to turning components off while idling, heating up, and/or throttling themselves.  Be wary!  Run speed tests multiple times with pauses (not only in succession), and convince yourself whether (or not) the results are reasonable.
@@ -23,10 +23,11 @@ Neat!  Are other groups in the lab finding similar things?
 
 -----
 
-Go back to the earliest processing-bound parameters.  Now add these flags to the compile line (touch the .c file and remake to see the default compile line), and optionally output to a different file (-o multiblock_vec):
-          -ftree-vectorize -fopt-info-vec-optimized
+Go back to the earliest processing-bound parameters.  Now add these flags to the compile line (touch the .c file and remake to see the default compile line), and optionally output to a different file (`-o multiblock_vec`):
 
-You "should" be given notices from the opt-info flag about the inner loop being vectorized.  Rerun with the earliest processing-bound parameters you found above.  You should see a performance improvement.  Now if you double inner_reps you should see still more improvement.  This means that the processing saturation point has shifted!  Hopefully you are curious to characterize this new roofline and see what it looks like as well.
+    -ftree-vectorize -fopt-info-vec-optimized
+
+You "should" be given notices from the `-fopt-info-vec-optimized` flag about the inner loop being vectorized.  Rerun with the earliest processing-bound parameters you found above.  You should see a performance improvement.  Now if you double inner_reps you should see still more improvement.  This means that the processing saturation point has shifted!  Hopefully you are curious to characterize this new roofline and see what it looks like as well.
 
 What is the relationship between the vectorized and unvectorized versions as you change block_size?
 
